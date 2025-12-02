@@ -89,7 +89,7 @@ public class addExpenses extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 350, 98));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 350, 80));
 
         foodsAndDrinks.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         foodsAndDrinks.setForeground(new java.awt.Color(31, 60, 136));
