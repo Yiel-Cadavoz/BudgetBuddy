@@ -223,7 +223,8 @@ public class DashBoard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void viewExpensesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewExpensesBtnActionPerformed
-        // TODO add your handling code here:
+        viewExpenses ve = new viewExpenses();
+        ve.setVisible(true);
     }//GEN-LAST:event_viewExpensesBtnActionPerformed
 
     private void monthlySummaryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_monthlySummaryBtnActionPerformed
@@ -231,11 +232,13 @@ public class DashBoard extends javax.swing.JFrame {
     }//GEN-LAST:event_monthlySummaryBtnActionPerformed
 
     private void addExpensesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addExpensesBtnActionPerformed
-        // TODO add your handling code here:
+        addExpenses ae = new addExpenses();
+        ae.setVisible(true);
     }//GEN-LAST:event_addExpensesBtnActionPerformed
 
     private void LogoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutBtnActionPerformed
-        // TODO add your handling code here:
+        Homepage home = new Homepage();
+        home.setVisible(true);
     }//GEN-LAST:event_LogoutBtnActionPerformed
 
     /**
@@ -258,7 +261,7 @@ public class DashBoard extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(DashBoard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
         //</editor-fold>
 
         /* Create and display the form */
