@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class Register extends javax.swing.JFrame {
-    
+
     private HashMap<String, String> usersMap = new HashMap<>();
 
     public Register() {
@@ -14,11 +14,12 @@ public class Register extends javax.swing.JFrame {
         loadUsers(); // load existing users into the map
         setLocationRelativeTo(null);
     }
-    
+
     private void loadUsers() {
         File file = new File("users.txt");
-        if (!file.exists()) return; // no file yet
-
+        if (!file.exists()) {
+            return; // no file yet
+        }
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -31,7 +32,7 @@ public class Register extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Error loading users: " + e.getMessage());
         }
     }
-    
+
     private void saveUser(String username, String encryptedPassword) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter("users.txt", true))) {
             bw.write(username + "," + encryptedPassword);
@@ -40,7 +41,7 @@ public class Register extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Error saving user: " + e.getMessage());
         }
     }
-    
+
     private String caesarEncrypt(String text, int shift) {
         StringBuilder sb = new StringBuilder();
         for (char c : text.toCharArray()) {
@@ -52,7 +53,7 @@ public class Register extends javax.swing.JFrame {
         }
         return sb.toString();
     }
-    
+
     private void registerUser(String username, String password, String confirmPassword) {
         if (username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill all fields.");
@@ -242,7 +243,16 @@ public class Register extends javax.swing.JFrame {
         String username = UsernameTextField.getText().trim();
         String password = String.valueOf(PasswordTextField.getPassword());
         String confirmPassword = String.valueOf(ConfirmPasswordTextField.getPassword());
+
+        // Call your registration logic
         registerUser(username, password, confirmPassword);
+
+        // Open the login window
+        LogIn loginWindow = new LogIn();
+        loginWindow.setVisible(true);
+
+        // Close the current Register window
+        this.dispose();
     }//GEN-LAST:event_RegisterBtn1ActionPerformed
 
     private void UsernameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsernameTextFieldActionPerformed

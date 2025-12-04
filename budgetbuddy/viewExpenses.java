@@ -27,22 +27,20 @@ public class viewExpenses extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         searchBar = new javax.swing.JTextField();
         searchButton = new javax.swing.JButton();
         sortBy = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        historyOfExpenses = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(106, 212, 177));
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 151));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/UpperLogo.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(197, 28, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/brand.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 28, -1, -1));
@@ -53,6 +51,7 @@ public class viewExpenses extends javax.swing.JFrame {
         searchBar.setPreferredSize(new java.awt.Dimension(64, 37));
         jPanel2.add(searchBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 440, 30));
 
+        searchButton.setBackground(new java.awt.Color(106, 212, 177));
         searchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
         searchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,6 +73,15 @@ public class viewExpenses extends javax.swing.JFrame {
         jLabel3.setText("HISTORY: ");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 110, -1));
 
+        jButton1.setBackground(new java.awt.Color(106, 212, 177));
+        jButton1.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(31, 60, 136));
+        jButton1.setText("BACK");
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 350, -1, -1));
+
+        historyOfExpenses.setLayout(new javax.swing.BoxLayout(historyOfExpenses, javax.swing.BoxLayout.LINE_AXIS));
+        jPanel2.add(historyOfExpenses, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 680, 300));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -89,7 +97,7 @@ public class viewExpenses extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE))
         );
 
         pack();
@@ -139,7 +147,8 @@ public class viewExpenses extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel historyOfExpenses;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;

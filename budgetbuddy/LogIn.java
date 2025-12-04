@@ -13,10 +13,12 @@ public class LogIn extends javax.swing.JFrame {
         loadUsers();
         setLocationRelativeTo(null);
     }
-    
+
     private void loadUsers() {
         File file = new File("users.txt");
-        if (!file.exists()) return;
+        if (!file.exists()) {
+            return;
+        }
 
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
@@ -30,7 +32,7 @@ public class LogIn extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Error loading users: " + e.getMessage());
         }
     }
-    
+
     private String caesarDecrypt(String text, int shift) {
         StringBuilder sb = new StringBuilder();
         for (char c : text.toCharArray()) {
@@ -42,7 +44,7 @@ public class LogIn extends javax.swing.JFrame {
         }
         return sb.toString();
     }
-    
+
     private void login(String username, String password) {
         if (username.isEmpty() || password.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill all fields.");
@@ -56,7 +58,7 @@ public class LogIn extends javax.swing.JFrame {
         if (password.equals(decrypted)) {
             JOptionPane.showMessageDialog(this, "Login successful!");
             this.dispose();
-            new Homepage().setVisible(true); // replace with your homepage/dashboard
+            new DashBoard().setVisible(true); // <-- open Dashboard here
         } else {
             JOptionPane.showMessageDialog(this, "Incorrect password.");
         }
@@ -195,7 +197,7 @@ public class LogIn extends javax.swing.JFrame {
     private void LoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBtnActionPerformed
         String username = UsernameField.getText().trim();
         String password = String.valueOf(PasswordField.getPassword());
-        login(username, password);
+        login(username, password); // no boolean needed
     }//GEN-LAST:event_LoginBtnActionPerformed
 
     private void UsernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsernameFieldActionPerformed
