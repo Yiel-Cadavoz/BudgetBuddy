@@ -90,26 +90,23 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace pref="139" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="returnBtn" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="jScrollPane2" min="-2" pref="596" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="returnBtn" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="111" max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="500" max="-2" attributes="0"/>
+                  <EmptySpace pref="189" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="10" max="32767" attributes="0"/>
-                  <Component id="jScrollPane2" min="-2" pref="285" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="300" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="returnBtn" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
               </Group>
@@ -125,45 +122,32 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="returnBtnActionPerformed"/>
           </Events>
         </Component>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <AuxValues>
             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
           </AuxValues>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="table">
+            <Component class="javax.swing.JTable" name="jTable2">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="2" rowCount="12">
-                    <Column editable="true" title="Category" type="java.lang.Object">
-                      <Data value="Foods &amp; drinks"/>
-                      <Data value="Transportation"/>
+                    <Column editable="true" title="Title 1" type="java.lang.Object">
+                      <Data value="Food &amp; Drinks "/>
+                      <Data value="Transportations"/>
                       <Data value="Utilities"/>
                       <Data value="School / Work Projects"/>
-                      <Data value="Shoppig / Pesnonal Needs"/>
+                      <Data value="Shopping / Personal Needs"/>
                       <Data value="Health &amp; Hygiene"/>
                       <Data value="Entertainment &amp; Leisure"/>
-                      <Data value="Savings / Investment"/>
+                      <Data value="Savings / Investments"/>
                       <Data value="Debs / Loans"/>
-                      <Data value="Subsciptions"/>
+                      <Data value="Subscriptions"/>
                       <Data value="Household Items"/>
-                      <Data value="Miscellaneous / Others"/>
-                    </Column>
-                    <Column editable="true" title="Amount" type="java.lang.Object">
-                      <Data value="null"/>
-                      <Data value=""/>
-                      <Data value=""/>
-                      <Data value="null"/>
-                      <Data value="null"/>
-                      <Data value="null"/>
-                      <Data value="null"/>
-                      <Data value="null"/>
-                      <Data value=""/>
-                      <Data value="null"/>
-                      <Data value="null"/>
                       <Data value="null"/>
                     </Column>
+                    <Column editable="true" title="Title 2" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
