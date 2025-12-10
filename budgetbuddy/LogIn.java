@@ -11,24 +11,16 @@ public class LogIn extends javax.swing.JFrame {
         initComponents();
     }
 
-    private String caesarDecrypt(String text, int shift) {
+    private String caesarDecrypt(String text, int key) {
         if (text == null) {
-            return null;
+            return "";
         }
-        StringBuilder result = new StringBuilder();
-        shift = shift % 26;
+        StringBuilder decrypted = new StringBuilder();
         for (char c : text.toCharArray()) {
-            if (Character.isUpperCase(c)) {
-                char ch = (char) (((c - 'A' - shift + 26) % 26) + 'A');
-                result.append(ch);
-            } else if (Character.isLowerCase(c)) {
-                char ch = (char) (((c - 'a' - shift + 26) % 26) + 'a');
-                result.append(ch);
-            } else {
-                result.append(c); // non-alphabetic remains unchanged
-            }
+            char shifted = (char) (c - key); // reverse of Register.java encryption
+            decrypted.append(shifted);
         }
-        return result.toString();
+        return decrypted.toString();
     }
 
     private boolean validateUser(String username, String password) {
