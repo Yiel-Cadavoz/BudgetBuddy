@@ -8,7 +8,10 @@ import javax.swing.table.DefaultTableModel;
 
 public class monthlySummary extends javax.swing.JFrame {
 
-    public monthlySummary() {
+    private final String username;
+
+    public monthlySummary(String username) {
+        this.username = username;
         initComponents();
 
         tableMonthlySummary.setShowGrid(true);
@@ -31,10 +34,10 @@ public class monthlySummary extends javax.swing.JFrame {
         for (int i = 0; i < tableMonthlySummary.getColumnModel().getColumnCount(); i++) {
             tableMonthlySummary.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
         }
-        
+
         populateMonthlyTotals();
     }
-    
+
     private void populateMonthlyTotals() {
         DefaultTableModel model = (DefaultTableModel) tableMonthlySummary.getModel();
         ExpenseManager manager = ExpenseManager.getInstance(); // ADDED
@@ -168,8 +171,8 @@ public class monthlySummary extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void returnBn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnBn2ActionPerformed
-        this.dispose(); // close current window
-        new DashBoard().setVisible(true); // open dashboard
+        this.dispose();
+        new DashBoard(this.username).setVisible(true);
     }//GEN-LAST:event_returnBn2ActionPerformed
 
     /**
@@ -201,7 +204,7 @@ public class monthlySummary extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new monthlySummary().setVisible(true);
+            new monthlySummary("Guest").setVisible(true);
         });
     }
 

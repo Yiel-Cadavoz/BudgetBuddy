@@ -20,13 +20,13 @@ public class DashBoard extends javax.swing.JFrame {
         });
 
         categorySummaryBtn.addActionListener(evt -> {
-            categorySummary cs = new categorySummary();
+            categorySummary cs = new categorySummary(userNameLabel.getText().replace("USER: ", ""));
             cs.setVisible(true);
             this.dispose();
         });
 
         monthlySummaryBtn.addActionListener(evt -> {
-            monthlySummary ms = new monthlySummary();
+            monthlySummary ms = new monthlySummary(userNameLabel.getText().replace("USER: ", ""));
             ms.setVisible(true);
             this.dispose();
         });
@@ -36,10 +36,6 @@ public class DashBoard extends javax.swing.JFrame {
             home.setVisible(true);
             this.dispose();
         });
-    }
-
-    DashBoard() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @SuppressWarnings("unchecked")
@@ -151,6 +147,11 @@ public class DashBoard extends javax.swing.JFrame {
         });
 
         categorySummaryBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CategorySummary.png"))); // NOI18N
+        categorySummaryBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                categorySummaryBtnActionPerformed(evt);
+            }
+        });
 
         monthlySummaryBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/MonthlySummary.png"))); // NOI18N
         monthlySummaryBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -259,11 +260,13 @@ public class DashBoard extends javax.swing.JFrame {
     private void viewExpensesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewExpensesBtnActionPerformed
         viewExpenses ve = new viewExpenses(userNameLabel.getText().replace("USER: ", ""));
         ve.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_viewExpensesBtnActionPerformed
 
     private void monthlySummaryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_monthlySummaryBtnActionPerformed
-        monthlySummary ms = new monthlySummary();
+        monthlySummary ms = new monthlySummary(userNameLabel.getText().replace("USER: ", ""));
         ms.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_monthlySummaryBtnActionPerformed
 
     private void addExpensesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addExpensesBtnActionPerformed
@@ -276,6 +279,12 @@ public class DashBoard extends javax.swing.JFrame {
         Homepage home = new Homepage();
         home.setVisible(true);
     }//GEN-LAST:event_LogoutBtnActionPerformed
+
+    private void categorySummaryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categorySummaryBtnActionPerformed
+        categorySummary cs = new categorySummary(userNameLabel.getText().replace("USER: ", ""));
+        cs.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_categorySummaryBtnActionPerformed
 
     /**
      * @param args the command line arguments

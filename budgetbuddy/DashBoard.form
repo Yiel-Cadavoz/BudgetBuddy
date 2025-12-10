@@ -255,6 +255,9 @@
               <Image iconType="3" name="/images/CategorySummary.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="categorySummaryBtnActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="monthlySummaryBtn">
           <Properties>

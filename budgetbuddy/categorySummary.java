@@ -11,10 +11,10 @@ import javax.swing.table.JTableHeader;
 
 public class categorySummary extends javax.swing.JFrame {
 
-    /**
-     * Creates new form categorySummary
-     */
-    public categorySummary() {
+    private final String username;
+    
+    public categorySummary(String username) {
+        this.username = username;
         initComponents();
 
         tableCategorySummary.setShowGrid(true);
@@ -41,7 +41,7 @@ public class categorySummary extends javax.swing.JFrame {
 
         populateCategoryTotals();
     }
-    
+
     private void populateCategoryTotals() {
         DefaultTableModel model = (DefaultTableModel) tableCategorySummary.getModel();
         ExpenseManager manager = ExpenseManager.getInstance(); // ADDED
@@ -177,8 +177,8 @@ public class categorySummary extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void returnBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnBtnActionPerformed
-        this.setVisible(false);
-        new DashBoard().setVisible(true);
+        this.dispose();
+        new DashBoard(this.username).setVisible(true);
     }//GEN-LAST:event_returnBtnActionPerformed
 
     /**
@@ -209,7 +209,7 @@ public class categorySummary extends javax.swing.JFrame {
         //</editor-fold>
 
         java.awt.EventQueue.invokeLater(() -> {
-            new categorySummary().setVisible(true);
+            new categorySummary("Guest").setVisible(true);
         });
     }
 
