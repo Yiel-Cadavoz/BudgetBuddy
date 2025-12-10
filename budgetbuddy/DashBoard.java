@@ -7,6 +7,10 @@ public class DashBoard extends javax.swing.JFrame {
         userNameLabel.setText("USER: " + username);
     }
 
+    DashBoard() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
