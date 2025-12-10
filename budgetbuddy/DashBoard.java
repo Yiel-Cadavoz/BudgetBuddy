@@ -1,10 +1,41 @@
 package budgetbuddy;
 
 public class DashBoard extends javax.swing.JFrame {
-    
+
     public DashBoard(String username) {
         initComponents();
+        this.setEnabled(true);
         userNameLabel.setText("USER: " + username);
+
+        addExpensesBtn.addActionListener(evt -> {
+            addExpenses ae = new addExpenses(userNameLabel.getText().replace("USER: ", ""));
+            ae.setVisible(true);
+            this.dispose();
+        });
+
+        viewExpensesBtn.addActionListener(evt -> {
+            viewExpenses ve = new viewExpenses(userNameLabel.getText().replace("USER: ", ""));
+            ve.setVisible(true);
+            this.dispose();
+        });
+
+        categorySummaryBtn.addActionListener(evt -> {
+            categorySummary cs = new categorySummary();
+            cs.setVisible(true);
+            this.dispose();
+        });
+
+        monthlySummaryBtn.addActionListener(evt -> {
+            monthlySummary ms = new monthlySummary();
+            ms.setVisible(true);
+            this.dispose();
+        });
+
+        LogoutBtn.addActionListener(evt -> {
+            Homepage home = new Homepage();
+            home.setVisible(true);
+            this.dispose();
+        });
     }
 
     DashBoard() {
@@ -226,7 +257,7 @@ public class DashBoard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void viewExpensesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewExpensesBtnActionPerformed
-        viewExpenses ve = new viewExpenses();
+        viewExpenses ve = new viewExpenses(userNameLabel.getText().replace("USER: ", ""));
         ve.setVisible(true);
     }//GEN-LAST:event_viewExpensesBtnActionPerformed
 
@@ -236,8 +267,9 @@ public class DashBoard extends javax.swing.JFrame {
     }//GEN-LAST:event_monthlySummaryBtnActionPerformed
 
     private void addExpensesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addExpensesBtnActionPerformed
-        addExpenses ae = new addExpenses();
+        addExpenses ae = new addExpenses(userNameLabel.getText().replace("USER: ", ""));
         ae.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_addExpensesBtnActionPerformed
 
     private void LogoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutBtnActionPerformed

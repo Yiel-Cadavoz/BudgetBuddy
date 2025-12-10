@@ -7,8 +7,10 @@ import java.util.List;
 public class viewExpenses extends javax.swing.JFrame {
 
     private final ExpenseManager manager;
+    private String username;
 
-    public viewExpenses() {
+    public viewExpenses(String username) {
+        this.username = username;
         initComponents();
 
         manager = ExpenseManager.getInstance(); // initialize manager
@@ -143,7 +145,7 @@ public class viewExpenses extends javax.swing.JFrame {
 
     private void returnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnButtonActionPerformed
         this.dispose();
-        DashBoard dash = new DashBoard();
+        DashBoard dash = new DashBoard(username); // or pass the actual logged-in username
         dash.setVisible(true);
     }//GEN-LAST:event_returnButtonActionPerformed
 
@@ -176,7 +178,7 @@ public class viewExpenses extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new viewExpenses().setVisible(true);
+            new viewExpenses("Guest").setVisible(true);
         });
     }
 

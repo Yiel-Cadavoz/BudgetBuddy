@@ -5,8 +5,11 @@ import java.time.format.DateTimeFormatter;
 
 public class addExpenses extends javax.swing.JFrame {
 
-    public addExpenses() {
+    private final String username;
+
+    public addExpenses(String username) {
         initComponents();
+        this.username = username;
         groupCategoryButtons();
     }
 
@@ -241,7 +244,7 @@ public class addExpenses extends javax.swing.JFrame {
     private void addExpenseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addExpenseButtonActionPerformed
         addExpense();
         this.dispose();
-        DashBoard dash = new DashBoard();
+        DashBoard dash = new DashBoard(username); // pass username back
         dash.setVisible(true);
     }//GEN-LAST:event_addExpenseButtonActionPerformed
 
@@ -274,7 +277,7 @@ public class addExpenses extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new addExpenses().setVisible(true);
+            new addExpenses("Guest").setVisible(true);
         });
     }
 
