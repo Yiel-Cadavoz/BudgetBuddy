@@ -67,6 +67,8 @@ public class categorySummary extends javax.swing.JFrame {
             }
         });
 
+        table.setAutoCreateRowSorter(true);
+        table.setBackground(new java.awt.Color(106, 212, 177));
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"Food & Drinks ", ""},

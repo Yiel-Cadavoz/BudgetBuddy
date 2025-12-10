@@ -69,6 +69,8 @@ public class monthlySummary extends javax.swing.JFrame {
             }
         });
 
+        table2.setAutoCreateRowSorter(true);
+        table2.setBackground(new java.awt.Color(106, 212, 177));
         table2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"January", ""},
