@@ -113,18 +113,18 @@ public class categorySummary extends javax.swing.JFrame {
         tableCategorySummary.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
         tableCategorySummary.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Food & Drinks ", ""},
-                {"Transportations", null},
+                {"Food & Drinks", ""},
+                {"Transport", null},
                 {"Utilities", null},
-                {"School / Work Projects", null},
-                {"Shopping / Personal Needs", null},
-                {"Health & Hygiene", null},
-                {"Entertainment & Leisure", null},
-                {"Savings / Investments", null},
-                {"Debs / Loans", null},
-                {"Subscriptions", null},
-                {"Household Items", null},
-                {"Miscellaneous / Others", null}
+                {"Groceries", null},
+                {"Entertainment", null},
+                {"Health", null},
+                {"Education", null},
+                {"Shopping", null},
+                {"Bills", null},
+                {"Travel", null},
+                {"Gifts", null},
+                {"Others", null}
             },
             new String [] {
                 "Category", "Total Amount"

@@ -16,17 +16,17 @@ public class addExpenses extends javax.swing.JFrame {
     private void groupCategoryButtons() {
         javax.swing.ButtonGroup group = new javax.swing.ButtonGroup();
         group.add(foodsAndDrinks);
-        group.add(transportation);
+        group.add(transport);
         group.add(utilities);
-        group.add(schoolOrWorkProjects);
-        group.add(shoppingOrPersonalNeeds);
-        group.add(healthAndHygiene);
-        group.add(entertainmentAndLeisure);
-        group.add(savingsOrInvestments);
-        group.add(debtsOrLoans);
-        group.add(subscriptions);
-        group.add(householdItems);
-        group.add(miscellaneousOrOthers);
+        group.add(groceries);
+        group.add(entertainment);
+        group.add(health);
+        group.add(education);
+        group.add(shopping);
+        group.add(bills);
+        group.add(travel);
+        group.add(gifts);
+        group.add(others);
     }
 
     @SuppressWarnings("unchecked")
@@ -41,17 +41,17 @@ public class addExpenses extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         foodsAndDrinks = new javax.swing.JRadioButton();
-        transportation = new javax.swing.JRadioButton();
+        transport = new javax.swing.JRadioButton();
         utilities = new javax.swing.JRadioButton();
-        schoolOrWorkProjects = new javax.swing.JRadioButton();
-        shoppingOrPersonalNeeds = new javax.swing.JRadioButton();
-        healthAndHygiene = new javax.swing.JRadioButton();
-        entertainmentAndLeisure = new javax.swing.JRadioButton();
-        savingsOrInvestments = new javax.swing.JRadioButton();
-        debtsOrLoans = new javax.swing.JRadioButton();
-        subscriptions = new javax.swing.JRadioButton();
-        householdItems = new javax.swing.JRadioButton();
-        miscellaneousOrOthers = new javax.swing.JRadioButton();
+        groceries = new javax.swing.JRadioButton();
+        entertainment = new javax.swing.JRadioButton();
+        health = new javax.swing.JRadioButton();
+        education = new javax.swing.JRadioButton();
+        shopping = new javax.swing.JRadioButton();
+        bills = new javax.swing.JRadioButton();
+        travel = new javax.swing.JRadioButton();
+        gifts = new javax.swing.JRadioButton();
+        others = new javax.swing.JRadioButton();
         jLabel3 = new javax.swing.JLabel();
         amount = new javax.swing.JTextField();
         pesoSign = new javax.swing.JLabel();
@@ -97,60 +97,65 @@ public class addExpenses extends javax.swing.JFrame {
         foodsAndDrinks.setText("Food & Drinks");
         jPanel2.add(foodsAndDrinks, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 54, 183, -1));
 
-        transportation.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        transportation.setForeground(new java.awt.Color(31, 60, 136));
-        transportation.setText("Transportation");
-        jPanel2.add(transportation, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 83, 183, -1));
+        transport.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        transport.setForeground(new java.awt.Color(31, 60, 136));
+        transport.setText("Transport");
+        transport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                transportActionPerformed(evt);
+            }
+        });
+        jPanel2.add(transport, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 83, 183, -1));
 
         utilities.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         utilities.setForeground(new java.awt.Color(31, 60, 136));
         utilities.setText("Utilities");
         jPanel2.add(utilities, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 112, 183, -1));
 
-        schoolOrWorkProjects.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        schoolOrWorkProjects.setForeground(new java.awt.Color(31, 60, 136));
-        schoolOrWorkProjects.setText("School/Work Projects");
-        jPanel2.add(schoolOrWorkProjects, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 141, 183, -1));
+        groceries.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        groceries.setForeground(new java.awt.Color(31, 60, 136));
+        groceries.setText("Groceries");
+        jPanel2.add(groceries, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 141, 183, -1));
 
-        shoppingOrPersonalNeeds.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        shoppingOrPersonalNeeds.setForeground(new java.awt.Color(31, 60, 136));
-        shoppingOrPersonalNeeds.setText("Shopping/Personal Needs");
-        jPanel2.add(shoppingOrPersonalNeeds, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 170, -1, -1));
+        entertainment.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        entertainment.setForeground(new java.awt.Color(31, 60, 136));
+        entertainment.setText("Entertainment");
+        jPanel2.add(entertainment, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 170, -1, -1));
 
-        healthAndHygiene.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        healthAndHygiene.setForeground(new java.awt.Color(31, 60, 136));
-        healthAndHygiene.setText("Health & Hygiene");
-        jPanel2.add(healthAndHygiene, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 199, 183, -1));
+        health.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        health.setForeground(new java.awt.Color(31, 60, 136));
+        health.setText("Health");
+        jPanel2.add(health, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 199, 183, -1));
 
-        entertainmentAndLeisure.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        entertainmentAndLeisure.setForeground(new java.awt.Color(31, 60, 136));
-        entertainmentAndLeisure.setText("Entertainment & Leisure");
-        jPanel2.add(entertainmentAndLeisure, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 54, 175, -1));
+        education.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        education.setForeground(new java.awt.Color(31, 60, 136));
+        education.setText("Education");
+        jPanel2.add(education, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 54, 175, -1));
 
-        savingsOrInvestments.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        savingsOrInvestments.setForeground(new java.awt.Color(31, 60, 136));
-        savingsOrInvestments.setText("Savings/Investments");
-        jPanel2.add(savingsOrInvestments, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 83, 175, -1));
+        shopping.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        shopping.setForeground(new java.awt.Color(31, 60, 136));
+        shopping.setText("Shopping");
+        jPanel2.add(shopping, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 83, 175, -1));
 
-        debtsOrLoans.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        debtsOrLoans.setForeground(new java.awt.Color(31, 60, 136));
-        debtsOrLoans.setText("Debts/Loans");
-        jPanel2.add(debtsOrLoans, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 112, 175, -1));
+        bills.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        bills.setForeground(new java.awt.Color(31, 60, 136));
+        bills.setText("Bills ");
+        jPanel2.add(bills, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 112, 175, -1));
 
-        subscriptions.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        subscriptions.setForeground(new java.awt.Color(31, 60, 136));
-        subscriptions.setText("Subscriptions");
-        jPanel2.add(subscriptions, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 141, 175, -1));
+        travel.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        travel.setForeground(new java.awt.Color(31, 60, 136));
+        travel.setText("Travel");
+        jPanel2.add(travel, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 141, 175, -1));
 
-        householdItems.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        householdItems.setForeground(new java.awt.Color(31, 60, 136));
-        householdItems.setText("Household Items");
-        jPanel2.add(householdItems, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 170, 175, -1));
+        gifts.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        gifts.setForeground(new java.awt.Color(31, 60, 136));
+        gifts.setText("Gifts");
+        jPanel2.add(gifts, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 170, 175, -1));
 
-        miscellaneousOrOthers.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        miscellaneousOrOthers.setForeground(new java.awt.Color(31, 60, 136));
-        miscellaneousOrOthers.setText("Miscellaneous/Others");
-        jPanel2.add(miscellaneousOrOthers, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 199, 175, -1));
+        others.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        others.setForeground(new java.awt.Color(31, 60, 136));
+        others.setText("Others");
+        jPanel2.add(others, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 199, 175, -1));
 
         jLabel3.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(31, 60, 136));
@@ -248,6 +253,10 @@ public class addExpenses extends javax.swing.JFrame {
         dash.setVisible(true);
     }//GEN-LAST:event_addExpenseButtonActionPerformed
 
+    private void transportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transportActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_transportActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -287,28 +296,28 @@ public class addExpenses extends javax.swing.JFrame {
 
         if (foodsAndDrinks.isSelected()) {
             category = "Food & Drinks";
-        } else if (transportation.isSelected()) {
-            category = "Transportation";
+        } else if (transport.isSelected()) {
+            category = "Transport";
         } else if (utilities.isSelected()) {
             category = "Utilities";
-        } else if (schoolOrWorkProjects.isSelected()) {
-            category = "School/Work Projects";
-        } else if (shoppingOrPersonalNeeds.isSelected()) {
-            category = "Shopping/Personal Needs";
-        } else if (healthAndHygiene.isSelected()) {
-            category = "Health & Hygiene";
-        } else if (entertainmentAndLeisure.isSelected()) {
-            category = "Entertainment & Leisure";
-        } else if (savingsOrInvestments.isSelected()) {
-            category = "Savings/Investments";
-        } else if (debtsOrLoans.isSelected()) {
-            category = "Debts/Loans";
-        } else if (subscriptions.isSelected()) {
-            category = "Subscriptions";
-        } else if (householdItems.isSelected()) {
-            category = "Household Items";
-        } else if (miscellaneousOrOthers.isSelected()) {
-            category = "Miscellaneous/Others";
+        } else if (groceries.isSelected()) {
+            category = "Groceries";
+        } else if (entertainment.isSelected()) {
+            category = "Entertainment";
+        } else if (health.isSelected()) {
+            category = "Health";
+        } else if (education.isSelected()) {
+            category = "Education";
+        } else if (shopping.isSelected()) {
+            category = "Shopping";
+        } else if (bills.isSelected()) {
+            category = "Bills";
+        } else if (travel.isSelected()) {
+            category = "Travel";
+        } else if (gifts.isSelected()) {
+            category = "Gifts";
+        } else if (others.isSelected()) {
+            category = "Others";
         }
 
         if (category == null) {
@@ -369,15 +378,17 @@ public class addExpenses extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addExpenseButton;
     private javax.swing.JTextField amount;
+    private javax.swing.JRadioButton bills;
     private javax.swing.JLabel categoryLabel;
     private javax.swing.JLabel categoryLabel1;
     private javax.swing.JLabel dayLabel;
     private javax.swing.JTextField dayTextField;
-    private javax.swing.JRadioButton debtsOrLoans;
-    private javax.swing.JRadioButton entertainmentAndLeisure;
+    private javax.swing.JRadioButton education;
+    private javax.swing.JRadioButton entertainment;
     private javax.swing.JRadioButton foodsAndDrinks;
-    private javax.swing.JRadioButton healthAndHygiene;
-    private javax.swing.JRadioButton householdItems;
+    private javax.swing.JRadioButton gifts;
+    private javax.swing.JRadioButton groceries;
+    private javax.swing.JRadioButton health;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -385,15 +396,13 @@ public class addExpenses extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JRadioButton miscellaneousOrOthers;
     private javax.swing.JComboBox<String> monthDropdown;
     private javax.swing.JLabel monthLabel;
+    private javax.swing.JRadioButton others;
     private javax.swing.JLabel pesoSign;
-    private javax.swing.JRadioButton savingsOrInvestments;
-    private javax.swing.JRadioButton schoolOrWorkProjects;
-    private javax.swing.JRadioButton shoppingOrPersonalNeeds;
-    private javax.swing.JRadioButton subscriptions;
-    private javax.swing.JRadioButton transportation;
+    private javax.swing.JRadioButton shopping;
+    private javax.swing.JRadioButton transport;
+    private javax.swing.JRadioButton travel;
     private javax.swing.JRadioButton utilities;
     private javax.swing.JLabel yearLabel;
     private javax.swing.JTextField yearTextField;

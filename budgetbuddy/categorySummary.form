@@ -141,18 +141,18 @@
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="2" rowCount="12">
                     <Column editable="true" title="Category" type="java.lang.Object">
-                      <Data value="Food &amp; Drinks "/>
-                      <Data value="Transportations"/>
+                      <Data value="Food &amp; Drinks"/>
+                      <Data value="Transport"/>
                       <Data value="Utilities"/>
-                      <Data value="School / Work Projects"/>
-                      <Data value="Shopping / Personal Needs"/>
-                      <Data value="Health &amp; Hygiene"/>
-                      <Data value="Entertainment &amp; Leisure"/>
-                      <Data value="Savings / Investments"/>
-                      <Data value="Debs / Loans"/>
-                      <Data value="Subscriptions"/>
-                      <Data value="Household Items"/>
-                      <Data value="Miscellaneous / Others"/>
+                      <Data value="Groceries"/>
+                      <Data value="Entertainment"/>
+                      <Data value="Health"/>
+                      <Data value="Education"/>
+                      <Data value="Shopping"/>
+                      <Data value="Bills"/>
+                      <Data value="Travel"/>
+                      <Data value="Gifts"/>
+                      <Data value="Others"/>
                     </Column>
                     <Column editable="true" title="Total Amount" type="java.lang.Object">
                       <Data value=""/>
