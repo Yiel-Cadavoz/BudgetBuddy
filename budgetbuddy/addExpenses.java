@@ -56,8 +56,6 @@ public class addExpenses extends javax.swing.JFrame {
         dayTextField = new javax.swing.JTextField();
         yearLabel = new javax.swing.JLabel();
         yearTextField = new javax.swing.JTextField();
-        decimalPoint = new javax.swing.JLabel();
-        centTextField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -159,7 +157,7 @@ public class addExpenses extends javax.swing.JFrame {
         });
         jPanel2.add(amount, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 50, 110, 30));
 
-        pesoSign.setText("  ₱  ");
+        pesoSign.setText("  P");
         jPanel2.add(pesoSign, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, 20, 30));
 
         jLabel4.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
@@ -198,17 +196,6 @@ public class addExpenses extends javax.swing.JFrame {
         jPanel2.add(yearLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 180, -1, 20));
         jPanel2.add(yearTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(503, 180, 80, -1));
 
-        decimalPoint.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        decimalPoint.setText(".");
-        jPanel2.add(decimalPoint, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 50, 20, 30));
-
-        centTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                centTextFieldActionPerformed(evt);
-            }
-        });
-        jPanel2.add(centTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 50, 30, 30));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -241,10 +228,6 @@ public class addExpenses extends javax.swing.JFrame {
     private void dayTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dayTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_dayTextFieldActionPerformed
-
-    private void centTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_centTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_centTextFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -286,11 +269,9 @@ public class addExpenses extends javax.swing.JFrame {
     private javax.swing.JTextField amount;
     private javax.swing.JLabel categoryLabel;
     private javax.swing.JLabel categoryLabel1;
-    private javax.swing.JTextField centTextField;
     private javax.swing.JLabel dayLabel;
     private javax.swing.JTextField dayTextField;
     private javax.swing.JRadioButton debtsOrLoans;
-    private javax.swing.JLabel decimalPoint;
     private javax.swing.JRadioButton entertainmentAndLeisure;
     private javax.swing.JRadioButton foodsAndDrinks;
     private javax.swing.JRadioButton healthAndHygiene;

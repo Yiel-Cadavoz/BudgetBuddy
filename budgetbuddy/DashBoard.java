@@ -1,9 +1,10 @@
 package budgetbuddy;
 
 public class DashBoard extends javax.swing.JFrame {
-
-    public DashBoard() {
+    
+    public DashBoard(String username) {
         initComponents();
+        userNameLabel.setText("USER: " + username);
     }
 
     @SuppressWarnings("unchecked")
@@ -35,7 +36,7 @@ public class DashBoard extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/circle-user (2) (1).png"))); // NOI18N
 
         userNameLabel.setFont(new java.awt.Font("Corbel", 1, 20)); // NOI18N
-        userNameLabel.setText("USERNAME:");
+        userNameLabel.setText("USER:");
 
         LogoutBtn.setBackground(new java.awt.Color(106, 212, 177));
         LogoutBtn.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
@@ -52,19 +53,17 @@ public class DashBoard extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(userNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 44, Short.MAX_VALUE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(LogoutBtn)
+                .addContainerGap(50, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(userNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(LogoutBtn)))
                 .addGap(23, 23, 23))
         );
         jPanel1Layout.setVerticalGroup(
@@ -73,7 +72,7 @@ public class DashBoard extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(userNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(userNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(LogoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40))
@@ -228,7 +227,8 @@ public class DashBoard extends javax.swing.JFrame {
     }//GEN-LAST:event_viewExpensesBtnActionPerformed
 
     private void monthlySummaryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_monthlySummaryBtnActionPerformed
-        // TODO add your handling code here:
+        monthlySummary ms = new monthlySummary();
+        ms.setVisible(true);
     }//GEN-LAST:event_monthlySummaryBtnActionPerformed
 
     private void addExpensesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addExpensesBtnActionPerformed
@@ -266,7 +266,7 @@ public class DashBoard extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new DashBoard().setVisible(true);
+            new DashBoard("Guest").setVisible(true);
         });
     }
 

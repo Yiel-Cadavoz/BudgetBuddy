@@ -137,15 +137,15 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="table2">
+            <Component class="javax.swing.JTable" name="tableMonthlySummary">
               <Properties>
                 <Property name="autoCreateRowSorter" type="boolean" value="true"/>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="b1" green="d4" red="6a" type="rgb"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Corbel" size="18" style="1"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="2" rowCount="12">
-                    <Column editable="true" title="Months" type="java.lang.Object">
+                    <Column editable="true" title="Month" type="java.lang.Object">
                       <Data value="January"/>
                       <Data value="February"/>
                       <Data value="March"/>
@@ -157,9 +157,9 @@
                       <Data value="September"/>
                       <Data value="October"/>
                       <Data value="November"/>
-                      <Data value="null"/>
+                      <Data value="December"/>
                     </Column>
-                    <Column editable="true" title="total Amount" type="java.lang.Object">
+                    <Column editable="true" title="Total Amount" type="java.lang.Object">
                       <Data value=""/>
                       <Data value="null"/>
                       <Data value="null"/>

@@ -60,6 +60,7 @@ public class viewExpenses extends javax.swing.JFrame {
         });
         jPanel2.add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 10, 40, 30));
 
+        sortBy.setBackground(new java.awt.Color(106, 212, 177));
         sortBy.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Date", "Amount", "Category" }));
         sortBy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

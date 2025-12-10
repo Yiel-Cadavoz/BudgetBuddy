@@ -1,79 +1,14 @@
 package budgetbuddy;
 
-import java.io.*;
-import java.util.*;
+import java.awt.HeadlessException;
+import java.io.IOException;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 public class Register extends javax.swing.JFrame {
 
-    private HashMap<String, String> usersMap = new HashMap<>();
-
     public Register() {
         initComponents();
-        loadUsers(); // load existing users into the map
-        setLocationRelativeTo(null);
-    }
 
-    private void loadUsers() {
-        File file = new File("users.txt");
-        if (!file.exists()) {
-            return; // no file yet
-        }
-        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] parts = line.split(",");
-                if (parts.length == 2) {
-                    usersMap.put(parts[0].trim(), parts[1].trim());
-                }
-            }
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(this, "Error loading users: " + e.getMessage());
-        }
-    }
-
-    private void saveUser(String username, String encryptedPassword) {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("users.txt", true))) {
-            bw.write(username + "," + encryptedPassword);
-            bw.newLine();
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(this, "Error saving user: " + e.getMessage());
-        }
-    }
-
-    private String caesarEncrypt(String text, int shift) {
-        StringBuilder sb = new StringBuilder();
-        for (char c : text.toCharArray()) {
-            if (Character.isLetter(c)) {
-                char base = Character.isUpperCase(c) ? 'A' : 'a';
-                c = (char) ((c - base + shift) % 26 + base);
-            }
-            sb.append(c);
-        }
-        return sb.toString();
-    }
-
-    private void registerUser(String username, String password, String confirmPassword) {
-        if (username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please fill all fields.");
-            return;
-        }
-        if (!password.equals(confirmPassword)) {
-            JOptionPane.showMessageDialog(this, "Passwords do not match.");
-            return;
-        }
-        if (usersMap.containsKey(username)) {
-            JOptionPane.showMessageDialog(this, "Username already exists.");
-            return;
-        }
-
-        String encrypted = caesarEncrypt(password, 5);
-        saveUser(username, encrypted);
-        usersMap.put(username, encrypted);
-        JOptionPane.showMessageDialog(this, "Registration successful!");
-        this.dispose();
-        new LogIn().setVisible(true);
     }
 
     @SuppressWarnings("unchecked")
@@ -236,22 +171,61 @@ public class Register extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void RegisterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterBtnActionPerformed
-        // TODO add your handling code here:
+//not included
     }//GEN-LAST:event_RegisterBtnActionPerformed
 
     private void RegisterBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterBtn1ActionPerformed
         String username = UsernameTextField.getText().trim();
-        String password = String.valueOf(PasswordTextField.getPassword());
-        String confirmPassword = String.valueOf(ConfirmPasswordTextField.getPassword());
+        String password = new String(PasswordTextField.getPassword());
+        String confirmPassword = new String(ConfirmPasswordTextField.getPassword());
 
-        // Call your registration logic
-        registerUser(username, password, confirmPassword);
+        // EMPTY FIELDS CHECK
+        if (username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Please fill in all fields.");
+            return;
+        }
 
-        // Open the login window
-        LogIn loginWindow = new LogIn();
-        loginWindow.setVisible(true);
+        // PASSWORD MATCH CHECK
+        if (!password.equals(confirmPassword)) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Passwords do not match!");
+            return;
+        }
 
-        // Close the current Register window
+        // CHECK IF USER EXISTS
+        java.io.File file = new java.io.File("users.txt");
+        try {
+            file.createNewFile(); // creates if not existing
+            try (java.util.Scanner scanner = new java.util.Scanner(file)) {
+                while (scanner.hasNextLine()) {
+                    String line = scanner.nextLine();
+                    String[] parts = line.split(",");
+                    if (parts.length >= 1 && parts[0].equalsIgnoreCase(username)) {
+                        javax.swing.JOptionPane.showMessageDialog(this, "Username already exists!");
+                        scanner.close();
+                        return;
+                    }
+                }
+            }
+        } catch (HeadlessException | IOException e) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Error reading file!");
+            return;
+        }
+
+        // SAVE NEW USER
+        try (java.io.FileWriter fw = new java.io.FileWriter("users.txt", true)) {
+            fw.write(username + "," + password + "\n");
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Error saving user!");
+            return;
+        }
+
+        javax.swing.JOptionPane.showMessageDialog(this, "Registration successful!");
+
+        // OPEN LOGIN PAGE
+        LogIn loginPage = new LogIn();
+        loginPage.setVisible(true);
+        loginPage.pack();
+        loginPage.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_RegisterBtn1ActionPerformed
 

@@ -1,67 +1,43 @@
 package budgetbuddy;
 
-import java.io.*;
-import java.util.*;
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
 import javax.swing.*;
 
 public class LogIn extends javax.swing.JFrame {
 
-    private HashMap<String, String> usersMap = new HashMap<>();
-
     public LogIn() {
         initComponents();
-        loadUsers();
-        setLocationRelativeTo(null);
     }
 
-    private void loadUsers() {
+    private boolean validateUser(String username, String password) {
         File file = new File("users.txt");
-        if (!file.exists()) {
-            return;
-        }
 
-        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] parts = line.split(",");
-                if (parts.length == 2) {
-                    usersMap.put(parts[0].trim(), parts[1].trim());
+        try {
+            file.createNewFile(); // create if missing
+            try (Scanner scanner = new Scanner(file)) {
+                while (scanner.hasNextLine()) {
+                    String line = scanner.nextLine();
+                    String[] parts = line.split(",");
+                    
+                    if (parts.length >= 2) {
+                        String storedUser = parts[0].trim();
+                        String storedPass = parts[1].trim();
+                        
+                        if (storedUser.equalsIgnoreCase(username)
+                                && storedPass.equals(password)) {
+                            scanner.close();
+                            return true;
+                        }
+                    }
                 }
             }
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(this, "Error loading users: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error reading users.txt");
         }
-    }
 
-    private String caesarDecrypt(String text, int shift) {
-        StringBuilder sb = new StringBuilder();
-        for (char c : text.toCharArray()) {
-            if (Character.isLetter(c)) {
-                char base = Character.isUpperCase(c) ? 'A' : 'a';
-                c = (char) ((c - base - shift + 26) % 26 + base);
-            }
-            sb.append(c);
-        }
-        return sb.toString();
-    }
-
-    private void login(String username, String password) {
-        if (username.isEmpty() || password.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please fill all fields.");
-            return;
-        }
-        if (!usersMap.containsKey(username)) {
-            JOptionPane.showMessageDialog(this, "Username does not exist.");
-            return;
-        }
-        String decrypted = caesarDecrypt(usersMap.get(username), 5);
-        if (password.equals(decrypted)) {
-            JOptionPane.showMessageDialog(this, "Login successful!");
-            this.dispose();
-            new DashBoard().setVisible(true); // <-- open Dashboard here
-        } else {
-            JOptionPane.showMessageDialog(this, "Incorrect password.");
-        }
+        return false;
     }
 
     @SuppressWarnings("unchecked")
@@ -195,17 +171,25 @@ public class LogIn extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void LoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBtnActionPerformed
+
         String username = UsernameField.getText().trim();
-        String password = String.valueOf(PasswordField.getPassword());
-        login(username, password); // no boolean needed
+        String password = new String(PasswordField.getPassword()).trim();
+
+        if (validateUser(username, password)) {
+            DashBoard db = new DashBoard(username); // pass username
+            db.setVisible(true);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Invalid username or password.");
+        }
     }//GEN-LAST:event_LoginBtnActionPerformed
 
     private void UsernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsernameFieldActionPerformed
-        PasswordField.requestFocus();
+
     }//GEN-LAST:event_UsernameFieldActionPerformed
 
     private void PasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordFieldActionPerformed
-        LoginBtn.doClick();
+
     }//GEN-LAST:event_PasswordFieldActionPerformed
 
     private void jLabelCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseMouseClicked

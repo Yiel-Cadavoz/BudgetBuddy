@@ -4,10 +4,10 @@
  */
 package budgetbuddy;
 
-/**
- *
- * @author yielc
- */
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.JTableHeader;
+
 public class categorySummary extends javax.swing.JFrame {
 
     /**
@@ -15,6 +15,29 @@ public class categorySummary extends javax.swing.JFrame {
      */
     public categorySummary() {
         initComponents();
+
+        tableCategorySummary.setShowGrid(true);
+        tableCategorySummary.setGridColor(new java.awt.Color(106, 212, 177)); // mint green
+        tableCategorySummary.setIntercellSpacing(new java.awt.Dimension(1, 8));
+        tableCategorySummary.setRowHeight(28);
+
+        // HEADER FIX
+        JTableHeader header = tableCategorySummary.getTableHeader();
+        header.setFont(new java.awt.Font("Corbel", java.awt.Font.BOLD, 24));
+        header.setBackground(new java.awt.Color(106, 212, 177));
+        header.setForeground(new java.awt.Color(0, 0, 0));
+        header.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+
+        DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
+        header.setFont(new java.awt.Font("Corbel", java.awt.Font.BOLD, 24));
+        headerRenderer.setBackground(new java.awt.Color(106, 212, 177));  // your mint color
+        headerRenderer.setForeground(new java.awt.Color(0, 0, 0));        // black text
+        headerRenderer.setHorizontalAlignment(SwingConstants.CENTER);   // optional
+
+        for (int i = 0; i < tableCategorySummary.getColumnModel().getColumnCount(); i++) {
+            tableCategorySummary.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
+        }
+
     }
 
     /**
@@ -32,7 +55,10 @@ public class categorySummary extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         returnBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        table = new javax.swing.JTable();
+        tableCategorySummary = tableCategorySummary = new javax.swing.JTable();
+        tableCategorySummary.getTableHeader().setFont(new java.awt.Font("Corbel", java.awt.Font.BOLD, 24));
+
+        ;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,9 +93,9 @@ public class categorySummary extends javax.swing.JFrame {
             }
         });
 
-        table.setAutoCreateRowSorter(true);
-        table.setBackground(new java.awt.Color(106, 212, 177));
-        table.setModel(new javax.swing.table.DefaultTableModel(
+        tableCategorySummary.setAutoCreateRowSorter(true);
+        tableCategorySummary.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
+        tableCategorySummary.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"Food & Drinks ", ""},
                 {"Transportations", null},
@@ -88,7 +114,10 @@ public class categorySummary extends javax.swing.JFrame {
                 "Category", "Total Amount"
             }
         ));
-        jScrollPane1.setViewportView(table);
+        tableCategorySummary.setAlignmentX(1.0F);
+        tableCategorySummary.setAlignmentY(1.0F);
+        tableCategorySummary.setGridColor(new java.awt.Color(106, 212, 177));
+        jScrollPane1.setViewportView(tableCategorySummary);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -99,15 +128,15 @@ public class categorySummary extends javax.swing.JFrame {
                 .addComponent(returnBtn)
                 .addGap(16, 16, 16))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(78, 78, 78)
+                .addGap(91, 91, 91)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(48, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(returnBtn)
                 .addGap(19, 19, 19))
@@ -163,10 +192,8 @@ public class categorySummary extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new categorySummary().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new categorySummary().setVisible(true);
         });
     }
 
@@ -177,6 +204,6 @@ public class categorySummary extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton returnBtn;
-    private javax.swing.JTable table;
+    private javax.swing.JTable tableCategorySummary;
     // End of variables declaration//GEN-END:variables
 }

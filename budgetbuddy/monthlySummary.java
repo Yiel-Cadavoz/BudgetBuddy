@@ -4,6 +4,10 @@
  */
 package budgetbuddy;
 
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.JTableHeader;
+
 /**
  *
  * @author yielc
@@ -15,6 +19,27 @@ public class monthlySummary extends javax.swing.JFrame {
      */
     public monthlySummary() {
         initComponents();
+
+        tableMonthlySummary.setShowGrid(true);
+        tableMonthlySummary.setGridColor(new java.awt.Color(106, 212, 177));
+        tableMonthlySummary.setIntercellSpacing(new java.awt.Dimension(1, 8));
+        tableMonthlySummary.setRowHeight(28);
+
+        // HEADER FIX
+        JTableHeader header = tableMonthlySummary.getTableHeader();
+        header.setFont(new java.awt.Font("Corbel", java.awt.Font.BOLD, 24));
+        header.setBackground(new java.awt.Color(106, 212, 177));
+        header.setForeground(new java.awt.Color(0, 0, 0));
+        header.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+
+        DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
+        headerRenderer.setBackground(new java.awt.Color(106, 212, 177));
+        headerRenderer.setForeground(new java.awt.Color(0, 0, 0));
+        headerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+
+        for (int i = 0; i < tableMonthlySummary.getColumnModel().getColumnCount(); i++) {
+            tableMonthlySummary.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
+        }
     }
 
     /**
@@ -33,7 +58,7 @@ public class monthlySummary extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         returnBn2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        table2 = new javax.swing.JTable();
+        tableMonthlySummary = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -69,9 +94,9 @@ public class monthlySummary extends javax.swing.JFrame {
             }
         });
 
-        table2.setAutoCreateRowSorter(true);
-        table2.setBackground(new java.awt.Color(106, 212, 177));
-        table2.setModel(new javax.swing.table.DefaultTableModel(
+        tableMonthlySummary.setAutoCreateRowSorter(true);
+        tableMonthlySummary.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
+        tableMonthlySummary.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"January", ""},
                 {"February", null},
@@ -84,13 +109,13 @@ public class monthlySummary extends javax.swing.JFrame {
                 {"September", null},
                 {"October", null},
                 {"November", null},
-                {null, null}
+                {"December", null}
             },
             new String [] {
-                "Months", "total Amount"
+                "Month", "Total Amount"
             }
         ));
-        jScrollPane1.setViewportView(table2);
+        jScrollPane1.setViewportView(tableMonthlySummary);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -165,10 +190,8 @@ public class monthlySummary extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new monthlySummary().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new monthlySummary().setVisible(true);
         });
     }
 
@@ -180,6 +203,6 @@ public class monthlySummary extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton returnBn2;
-    private javax.swing.JTable table2;
+    private javax.swing.JTable tableMonthlySummary;
     // End of variables declaration//GEN-END:variables
 }

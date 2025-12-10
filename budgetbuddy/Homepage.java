@@ -125,15 +125,15 @@ public class Homepage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void LoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBtnActionPerformed
-        LogIn log = new LogIn();
-        log.setVisible(true);
-        dispose();
+        LogIn loginForm = new LogIn(); // create instance of LogIn
+        loginForm.setVisible(true);    // show it
+        this.dispose();
     }//GEN-LAST:event_LoginBtnActionPerformed
 
     private void RegisterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterBtnActionPerformed
-        Register reg = new Register();
-        reg.setVisible(true);
-        dispose();
+        Register registerForm = new Register(); // create instance of Register
+        registerForm.setVisible(true);          // show it
+        this.dispose();
     }//GEN-LAST:event_RegisterBtnActionPerformed
 
     private void jLabelCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseMouseClicked
