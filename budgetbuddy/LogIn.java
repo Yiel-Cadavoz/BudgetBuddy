@@ -11,6 +11,26 @@ public class LogIn extends javax.swing.JFrame {
         initComponents();
     }
 
+    private String caesarDecrypt(String text, int shift) {
+        if (text == null) {
+            return null;
+        }
+        StringBuilder result = new StringBuilder();
+        shift = shift % 26;
+        for (char c : text.toCharArray()) {
+            if (Character.isUpperCase(c)) {
+                char ch = (char) (((c - 'A' - shift + 26) % 26) + 'A');
+                result.append(ch);
+            } else if (Character.isLowerCase(c)) {
+                char ch = (char) (((c - 'a' - shift + 26) % 26) + 'a');
+                result.append(ch);
+            } else {
+                result.append(c); // non-alphabetic remains unchanged
+            }
+        }
+        return result.toString();
+    }
+
     private boolean validateUser(String username, String password) {
         File file = new File("users.txt");
 
@@ -20,16 +40,17 @@ public class LogIn extends javax.swing.JFrame {
                 while (scanner.hasNextLine()) {
                     String line = scanner.nextLine();
                     String[] parts = line.split(",");
-                    
+
                     if (parts.length >= 2) {
                         String storedUser = parts[0].trim();
                         String storedPass = parts[1].trim();
-                        
+
                         if (storedUser.equalsIgnoreCase(username)
-                                && storedPass.equals(password)) {
+                                && caesarDecrypt(storedPass, 3).equals(password)) { // decrypt stored password
                             scanner.close();
                             return true;
                         }
+
                     }
                 }
             }

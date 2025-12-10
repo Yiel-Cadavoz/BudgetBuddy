@@ -8,7 +8,18 @@ public class Register extends javax.swing.JFrame {
 
     public Register() {
         initComponents();
+    }
 
+    private String caesarEncrypt(String input, int key) {
+        if (input == null) {
+            return "";
+        }
+        StringBuilder encrypted = new StringBuilder();
+        for (char c : input.toCharArray()) {
+            char shifted = (char) (c + key);
+            encrypted.append(shifted);
+        }
+        return encrypted.toString();
     }
 
     @SuppressWarnings("unchecked")
@@ -213,7 +224,8 @@ public class Register extends javax.swing.JFrame {
 
         // SAVE NEW USER
         try (java.io.FileWriter fw = new java.io.FileWriter("users.txt", true)) {
-            fw.write(username + "," + password + "\n");
+            String encryptedPassword = caesarEncrypt(password, 3); // encrypt before saving
+            fw.write(username + "," + encryptedPassword + "\n");    // use encrypted password
         } catch (Exception e) {
             javax.swing.JOptionPane.showMessageDialog(this, "Error saving user!");
             return;
