@@ -60,6 +60,17 @@ public class ExpenseManager {
         return last;
     }
 
+    // Delete a specific expense
+    public boolean deleteExpense(Expense e) {
+        if (e == null) {
+            return false;
+        }
+        boolean removed = expenses.remove(e);
+        history.removeLastOccurrence(e); // maintain chronological history
+        undoStack.remove(e); // remove from undo stack if present
+        return removed;
+    }
+
     public List<Expense> getAllExpenses() {
         // return a shallow copy to prevent accidental external modifications
         return new ArrayList<>(expenses);

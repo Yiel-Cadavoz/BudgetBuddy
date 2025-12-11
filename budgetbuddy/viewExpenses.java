@@ -2,6 +2,8 @@ package budgetbuddy;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class viewExpenses extends javax.swing.JFrame {
@@ -18,18 +20,35 @@ public class viewExpenses extends javax.swing.JFrame {
     }
 
     private void refreshHistory(List<Expense> expenses) {
+        List<Expense> reversed = new ArrayList<>(expenses);
+        Collections.reverse(reversed);
+
         historyOfExpenses.removeAll();
         historyOfExpenses.setLayout(new BoxLayout(historyOfExpenses, BoxLayout.Y_AXIS));
 
-        for (Expense e : expenses) {
+        for (Expense e : reversed) {
             JPanel item = new JPanel();
-            item.setLayout(new GridLayout(1, 4));
+            item.setLayout(new GridLayout(1, 5, 5, 0));
             item.add(new JLabel(e.getDateString()));
             item.add(new JLabel(e.getCategory()));
             item.add(new JLabel(String.format("₱%.2f", e.getAmount())));
             item.add(new JLabel(e.getNotes()));
             item.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.GRAY));
 
+            // Delete button
+            JButton deleteBtn = new JButton("DELETE");
+            deleteBtn.setBackground(Color.RED);
+            deleteBtn.setForeground(Color.WHITE);
+            deleteBtn.addActionListener(ae -> {
+                int confirm = JOptionPane.showConfirmDialog(this, "Delete this expense?", "Confirm Delete", JOptionPane.YES_NO_OPTION);
+                if (confirm == JOptionPane.YES_OPTION) {
+                    manager.deleteExpense(e); // calls the new method
+                    refreshHistory(manager.getAllExpenses());
+                }
+            });
+            item.add(deleteBtn);
+
+            item.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.GRAY));
             historyOfExpenses.add(item);
         }
 
@@ -50,6 +69,7 @@ public class viewExpenses extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         returnButton = new javax.swing.JButton();
         historyOfExpenses = new javax.swing.JPanel();
+        undoBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -103,6 +123,17 @@ public class viewExpenses extends javax.swing.JFrame {
         historyOfExpenses.setLayout(new javax.swing.BoxLayout(historyOfExpenses, javax.swing.BoxLayout.LINE_AXIS));
         jPanel2.add(historyOfExpenses, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 680, 300));
 
+        undoBtn.setBackground(new java.awt.Color(106, 212, 177));
+        undoBtn.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
+        undoBtn.setForeground(new java.awt.Color(31, 60, 136));
+        undoBtn.setText("UNDO");
+        undoBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                undoBtnActionPerformed(evt);
+            }
+        });
+        jPanel2.add(undoBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, -1, 30));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -149,6 +180,16 @@ public class viewExpenses extends javax.swing.JFrame {
         dash.setVisible(true);
     }//GEN-LAST:event_returnButtonActionPerformed
 
+    private void undoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_undoBtnActionPerformed
+        Expense undone = manager.undoLastAdd();
+        if (undone != null) {
+            JOptionPane.showMessageDialog(this, "Last expense removed: " + undone.getNotes());
+            refreshHistory(manager.getAllExpenses());
+        } else {
+            JOptionPane.showMessageDialog(this, "Nothing to undo!");
+        }
+    }//GEN-LAST:event_undoBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -192,5 +233,6 @@ public class viewExpenses extends javax.swing.JFrame {
     private javax.swing.JTextField searchBar;
     private javax.swing.JButton searchButton;
     private javax.swing.JComboBox<String> sortBy;
+    private javax.swing.JButton undoBtn;
     // End of variables declaration//GEN-END:variables
 }

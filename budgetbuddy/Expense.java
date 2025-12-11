@@ -5,7 +5,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Expense {
-     private String category;
+
+    private String category;
     private String notes; // optional
     private double amount;
     private LocalDate date;
@@ -62,24 +63,28 @@ public class Expense {
 
     @Override
     public String toString() {
-        return "Expense{" +
-                "category='" + category + '\'' +
-                ", notes='" + notes + '\'' +
-                ", amount=" + amount +
-                ", date=" + getDateString() +
-                '}';
+        return "Expense{"
+                + "category='" + category + '\''
+                + ", notes='" + notes + '\''
+                + ", amount=" + amount
+                + ", date=" + getDateString()
+                + '}';
     }
 
     // equals and hashCode in case Sets/Maps need uniqueness
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Expense)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Expense)) {
+            return false;
+        }
         Expense expense = (Expense) o;
-        return Double.compare(expense.amount, amount) == 0 &&
-                Objects.equals(category, expense.category) &&
-                Objects.equals(notes, expense.notes) &&
-                Objects.equals(date, expense.date);
+        return Double.compare(expense.amount, amount) == 0
+                && Objects.equals(category, expense.category)
+                && Objects.equals(notes, expense.notes)
+                && Objects.equals(date, expense.date);
     }
 
     @Override
